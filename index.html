@@ -3,27 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css"> 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> 
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
     <script src="scripts/scripts.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Code Infinity Proficiency Test 2</title>
 </head>
 <body>
-    <?php include "/test2.php"; ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <?php include "/index.php"; ?>
     <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-        <form class="justify-content-center" action="test2.php" method="post">
+        <form class="justify-content-center d-flex justify-content-center align-items-center form-control records-amount-input" action="index.php" method="post">
             <div class="mb-3" class="input-container d-flex justify-content-center">
               <label for="exampleInputEmail1" class="form-label d-flex justify-content-center">Enter ammount of records</label>
-              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="ammountOfRecords" name="amtRecords">
+              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="ammountOfRecords" name="amtRecords" min="20" max="1000000">
               <div id="emailHelp" class="form-text">Enter an ammount of records up too 1,000,000.</div>
             </div>
             <div class="btn-container d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary d-flex mx-1" id="createCsvBtn">Submit</button>
                 <!-- <a href="/output/output.csv" download="output.csv" id="downloadBtn" class="d-flex btn btn-primary" disabled>Download CSV</a> -->
-                <button type="submit" class="btn btn-danger d-flex mx-1">Upload CSV</button>
+                <button type="button" class="btn btn-danger d-flex mx-1" data-bs-toggle="modal" data-bs-target="#myModal">Upload CSV</button>
             </div>
         </form>
     </div>
+    <div class="container d-flex min-vh-100 justify-content-center align-items-center">
+        <div class="modal form-control" tabindex="-1" id="myModal" >
+            <div class="modal-dialog modal-dialog-container modal-dialog-centered d-flex justify-content-center">
+              <div class="modal-content" id="modal-content">
+                <div class="modal-header container d-flex justify-content-center">
+                  <h5 class="modal-title container d-flex justify-content-center">Import to DB</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body modal-body container d-flex justify-content-center">
+                    <div class="container d-flex justify-content-center align-items-center drag-and-drop-container">
+                        <div class="drag-and-drop-title d-flex justify-content-center align-items-center">
+                            Drag file here or import with button.
+                        </div>
+                        <div class="drag-and-drop-image d-flex justify-content-center align-items-center">
+                            <i class="bi bi-file-earmark-arrow-down-fill file-icon h-5 w-5"></i>
+                        </div>
+                        <div class="upload-csv-btn justify-content-center align-items-center mt-2">
+                            <div class="container upload-from-browse-container">
+                                <form class="justify-content-center mt-2" action="index.php" method="post" enctype="multipart/form-data">
+                                    <div class="container d-flex upload-input-container">
+                                        <input class="form-control upload-input" type="file" id="formFile" name="uploadedCsv">
+                                    </div>
+                                    <div class="container d-flex submit-upload-csv-btn-container">
+                                        <button type="submit" class="btn btn-primary mt-5" name="csv-file-from-browse" value="csv-file-from-browse">Send to database.</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+    </div>
+    
+
 </body>
 </html>

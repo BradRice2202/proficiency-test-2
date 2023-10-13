@@ -3,7 +3,49 @@
     justify-content: center;
 }
 
-#downloadBtn{
-    /* pointer-events:none; */
-    visibility: hidden;
+.modal-dialog-container{
+    height:75vh;
+    width:40vw !important;
+    max-width: 40vw !important;
+}
+
+.drag-and-drop-title{
+    position: relative;
+}
+
+.drag-and-drop-image{
+    position: relative;
+}
+
+.drag-and-drop-container{
+    position: relative;
+    flex-direction: column;
+}
+
+.file-icon{
+    font-size: 3rem !important;
+}
+/* .upload-input[type='file']{
+    color: transparent;
+} */
+
+#modal-content{
+    height: 75vh;
+}
+
+.upload-input-container{
+    position: relative;
+    flex-direction: column;
+}
+
+.upload-from-browse-container{
+    position: relative;
+    /* display: flex; */
+    /* justify-content: center; */
+    flex-direction: column;
+}
+
+.submit-upload-csv-btn-container{
+    position: relative;
+    flex-direction: column;
 }
