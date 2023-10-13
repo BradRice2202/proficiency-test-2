@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="scripts/scripts.js"></script>
+    <title>Code Infinity Proficiency Test 2</title>
+</head>
+<body>
+    <?php include "/test2.php"; ?>
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+        <form class="justify-content-center" action="test2.php" method="post">
+            <div class="mb-3" class="input-container d-flex justify-content-center">
+              <label for="exampleInputEmail1" class="form-label d-flex justify-content-center">Enter ammount of records</label>
+              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="ammountOfRecords" name="amtRecords">
+              <div id="emailHelp" class="form-text">Enter an ammount of records up too 1,000,000.</div>
+            </div>
+            <div class="btn-container d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary d-flex mx-1" id="createCsvBtn">Submit</button>
+                <!-- <a href="/output/output.csv" download="output.csv" id="downloadBtn" class="d-flex btn btn-primary" disabled>Download CSV</a> -->
+                <button type="submit" class="btn btn-danger d-flex mx-1">Upload CSV</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

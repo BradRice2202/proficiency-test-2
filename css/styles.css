@@ -1,0 +1,9 @@
+.input-container{
+    display: flex;
+    justify-content: center;
+}
+
+#downloadBtn{
+    /* pointer-events:none; */
+    visibility: hidden;
+}
