@@ -6,12 +6,12 @@ $fields = ["Id","Name","Surname","Initials","Age","DateOfBirth"];
 $names = ["Bradley", "Gavin", "Nick", "Alexis", "Pierre", "Tom", "Aran", "Luke", "Allison", "Martin", "Caelan", "Aston", "Wielie", "Cameron", "Jeanette", "Jude", "Danny", "Thomas", "James", "Jake"];
 $surnames = ["Rice", "Burns", "Poon", "Strouthos", "Van De Merwe", "Brooks", "Groesbeek", "Greenburg", "Botha", "Johston", "Black", "Miles", "West", "North", "Ocean", "Banks", "Creed", "Tracey", "John", "Cash"];
 $id = 1;
-$test = 0;
+$amt = 0;
 
 $dbFile = 'sqliteDB/database.db';
 $db = new PDO("sqlite:sqliteDB/database.db");
 
-$row = 0;
+// $row = 0;
 
 if(isset($_POST["csv-file-from-browse"])){
 
@@ -32,14 +32,14 @@ if(isset($_POST["csv-file-from-browse"])){
 
     fclose($csvFile);
 
-    echo"<pre>";
-    print_r($array);
+    header('Location: index.html?db=added');
+    
 };
 
 function add_quotes($str)
 {
 
-    $fileurl = "127.0.0.1/output/output.csv";
+    // $fileurl = "127.0.0.1/output/output.csv";
 
     return sprintf('"%s"', $str);
 };
@@ -51,6 +51,8 @@ if (isset($_POST['submitAmtRecords'])) {
     $qry->execute();
 
     $amountOfRecords = intval($_POST["amtRecords"]);
+
+    $lastNameAmt = 0;
 
     $_SESSION['amtRec'] = $amountOfRecords;
 
@@ -75,29 +77,35 @@ if (isset($_POST['submitAmtRecords'])) {
 
             $person = [];
 
-            $person = [$id, $name, $lastName[$test], substr($name, 0, 1), $age, $birthdate];
+            $person = [$id, $name, $lastName[$lastNameAmt], substr($name, 0, 1), $age, $birthdate];
 
             $finalArr = array();
 
             array_push($finalArr, $person);
-
-            $id++;
-            $test++;
-
-            if ($test >= 20) {
-                $test = 0;
-            };
 
             $file = 'output/output.csv';
 
             foreach ($finalArr as $d) {
                 $csv = implode(',', array_map("add_quotes", $d));
                 file_put_contents($file, $csv . "\r\n", FILE_APPEND);
-                // $urlFile = "127.0.0.1:2000/output.csv";
+                $urlFile = "127.0.0.1:2000/output.csv";
                 $urlFile = "output.csv";
                 $fileName = basename($urlFile);
                 $fn = file_put_contents($fileName, file_get_contents($file));
             }
+
+            $id++;
+            $amt++;
+            $lastNameAmt++;
+
+            while($lastNameAmt >= 20){
+                $lastNameAmt = mt_rand(1,20);
+            };
+
+            if ($amt >= $amountOfRecords) {
+                exit;
+            }
+            header('Location: index.html?csv=created');
         };
     };
     header('Location: index.html?csv=created');
