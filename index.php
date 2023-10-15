@@ -1,12 +1,41 @@
 <?php
-    $fields = ["Id","Name","Surname","Initials","Age","DateOfBirth"];
+    // $fields = ["Id","Name","Surname","Initials","Age","DateOfBirth"];
     $names = ["Bradley","Gavin","Nick","Alexis","Pierre","Tom","Aran","Luke","Allison","Martin","Caelan","Aston","Wielie","Cameron","Jeanette","Jude","Danny","Thomas","James","Jake"];
     $surnames = ["Rice","Burns","Poon","Strouthos","Van De Merwe","Brooks","Groesbeek","Greenburg","Botha","Johston","Black","Miles","West","North","Ocean","Banks","Creed","Tracey","John","Cash"];
     $id = 1;
     $test = 0;
-    $first = true;
+    // $first = true;
 
-    $amountOfRecords = $_POST["amtRecords"];
+        // echo"<pre>";
+        // print_r($_FILES);
+        // exit;
+
+    if(isset($_POST['amtRecords']))
+    {
+        $amountOfRecords = $_POST["amtRecords"];
+
+    }
+    
+
+        $row = 0;
+        if(($handle = fopen("127.0.0.1:2000/output.csv", "r")) !== FALSE) //<- WORKS BUT DOWNLOADS AN HTML FILE
+        // if($handle = file_get_contents($_FILES['uploadedCsv']['tmp_name']))
+        {
+            // $header('content_disposition: attachment; filename="output.csv"');
+            
+            while(($data = fgetcsv($handle, 100, ",")) !== FALSE)
+            {
+                $num = count($data);
+                echo "<p> $num fields in line $row: <br /></p>\n";
+                $row++;
+                for($c=0; $c < $num; $c++)
+                {
+                    echo $data[$c]."<br />\n";
+                };
+            };
+            fclose($handle);
+            exit;
+        };
 
     function add_quotes($str)
         {
@@ -49,22 +78,22 @@
                 $id++;
                 $test++;
 
-                if($test <= 10)
+                if($test >= 20)
                 {
                     $test = 0;
                 };
 
-                if($amountOfRecords <= 1){
-                    array_unshift($finalArr, $fields);
-                    break;
-                };
+                // if($amountOfRecords <= 1){
+                //     array_unshift($finalArr, $fields);
+                //     break;
+                // };
 
                 $file = 'output/output.csv';
 
-                if($first)
-                {
-                    array_unshift($finalArr, $fields);
-                }
+                // if($first)
+                // {
+                //     array_unshift($finalArr, $fields);
+                // }
                 
 
                 foreach($finalArr as $d)
@@ -75,13 +104,15 @@
                     $urlFile = "/output.csv";
                     $fileName = basename($urlFile);
                     $fn = file_put_contents($fileName,file_get_contents($file));
+
+                    header("Content-Disposition: attachment; filename=$fileName");
                     // header('Location: ' . $_SERVER['HTTP_REFERER']);
-                    $first = false;
+                    // $first = false;
                 }
             };
              
         };
 
         // header('Location: ' . $_SERVER['HTTP_REFERER']);
-        header("Content-Disposition: attachment; filename=$fileName");
+        // header("Content-Disposition: attachment; filename=$fileName");
         // readfile($fileName);
