@@ -3,6 +3,12 @@
     justify-content: center;
 }
 
+.records-amount-input{
+    width: 25vw !important;
+    height: 50vh !important;
+    flex-direction: column;
+}
+
 .modal-dialog-container{
     height:75vh;
     width:40vw !important;
@@ -48,4 +54,20 @@
 .submit-upload-csv-btn-container{
     position: relative;
     flex-direction: column;
+}
+
+#download-csv-btn{
+    visibility: hidden;
+    display: none;
+    /* pointer-events: none; */
+}
+
+#resetBtn{
+    visibility: hidden;
+    display: none;
+}
+
+#dbSuccess{
+    visibility: hidden;
+    display: none;
 }
