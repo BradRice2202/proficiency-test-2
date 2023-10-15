@@ -19,9 +19,9 @@
     <div class="container min-vh-100 d-flex justify-content-center align-items-center">
         <form class="justify-content-center d-flex justify-content-center align-items-center form-control records-amount-input" action="index.php" method="post">
             <div class="mb-3" class="input-container d-flex justify-content-center">
-              <label for="exampleInputEmail1" class="form-label d-flex justify-content-center">Enter ammount of records</label>
-              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="amtRecords" max="1000000">
-              <div id="emailHelp" class="form-text">Enter an ammount of records up too 1,000,000.</div>
+              <label for="exampleInputEmail1" class="form-label d-flex justify-content-center" id="amtOfRecordsCreatedLbl">Enter ammount of records</label>
+              <input type="number" class="form-control" id="recordsInput" name="amtRecords" max="1000000">
+              <div id="amtOfInputs" class="form-text">Enter an ammount of records up too 1,000,000.</div>
             </div>
             <div class="btn-container d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary d-flex mx-1" id="createCsvBtn" name="submitAmtRecords">Create CSV</button>
@@ -44,7 +44,7 @@
                 <div class="modal-body modal-body container d-flex justify-content-center">
                     <div class="container d-flex justify-content-center align-items-center drag-and-drop-container">
                         <div class="drag-and-drop-title d-flex justify-content-center align-items-center">
-                            Import csv file with.
+                            Import csv file with browser.
                         </div>
                         <div class="drag-and-drop-image d-flex justify-content-center align-items-center">
                             <i class="bi bi-file-earmark-arrow-down-fill file-icon h-5 w-5"></i>

@@ -105,10 +105,10 @@ if (isset($_POST['submitAmtRecords'])) {
             if ($amt >= $amountOfRecords) {
                 exit;
             }
-            header('Location: index.html?csv=created');
+            header('Location: index.html?csv='.$amountOfRecords);
         };
     };
-    header('Location: index.html?csv=created');
+    header('Location: index.html?csv='.$amountOfRecords);
 };
 
 if(isset($_POST["resetBtn"])){

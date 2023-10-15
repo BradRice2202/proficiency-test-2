@@ -7,6 +7,9 @@
     width: 25vw !important;
     height: 50vh !important;
     flex-direction: column;
+    border-radius: 25px !important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+
 }
 
 .modal-dialog-container{
@@ -70,4 +73,16 @@
 #dbSuccess{
     visibility: hidden;
     display: none;
+}
+
+#modal-container{
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+}
+
+.modal-content{
+    -webkit-border-radius: 25px !important;
+    -moz-border-radius: 25px !important;
+    border-radius: 25px !important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
 }
