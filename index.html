@@ -17,13 +17,16 @@
         <form class="justify-content-center d-flex justify-content-center align-items-center form-control records-amount-input" action="index.php" method="post">
             <div class="mb-3" class="input-container d-flex justify-content-center">
               <label for="exampleInputEmail1" class="form-label d-flex justify-content-center">Enter ammount of records</label>
-              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="ammountOfRecords" name="amtRecords" min="20" max="1000000">
+              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="amtRecords" max="1000000">
               <div id="emailHelp" class="form-text">Enter an ammount of records up too 1,000,000.</div>
             </div>
             <div class="btn-container d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary d-flex mx-1" id="createCsvBtn" name="submitAmtRecords">Submit</button>
-                <!-- <a href="/output/output.csv" download="output.csv" id="downloadBtn" class="d-flex btn btn-primary" disabled>Download CSV</a> -->
+                <button type="submit" class="btn btn-primary d-flex mx-1" id="createCsvBtn" name="submitAmtRecords">Create CSV</button>
+                <a href="output/output.csv" id="download-csv-btn" onclick="hideDownloadBtn()" class="btn btn-primary mx-1">Download CSV</a>
                 <button type="button" class="btn btn-danger d-flex mx-1" data-bs-toggle="modal" data-bs-target="#myModal">Upload CSV</button>
+                <form action="index.html" method="post">
+                    <button class="btn btn-warning" name="resetBtn" id="resetBtn" type="submit" value="true"><i href="index.html?reset=true" class="bi bi-arrow-clockwise"></i></button>
+                </form>
             </div>
         </form>
     </div>
@@ -38,7 +41,7 @@
                 <div class="modal-body modal-body container d-flex justify-content-center">
                     <div class="container d-flex justify-content-center align-items-center drag-and-drop-container">
                         <div class="drag-and-drop-title d-flex justify-content-center align-items-center">
-                            Drag file here or import with button.
+                            Import csv file with.
                         </div>
                         <div class="drag-and-drop-image d-flex justify-content-center align-items-center">
                             <i class="bi bi-file-earmark-arrow-down-fill file-icon h-5 w-5"></i>
