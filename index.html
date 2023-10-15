@@ -21,7 +21,7 @@
               <div id="emailHelp" class="form-text">Enter an ammount of records up too 1,000,000.</div>
             </div>
             <div class="btn-container d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary d-flex mx-1" id="createCsvBtn">Submit</button>
+                <button type="submit" class="btn btn-primary d-flex mx-1" id="createCsvBtn" name="submitAmtRecords">Submit</button>
                 <!-- <a href="/output/output.csv" download="output.csv" id="downloadBtn" class="d-flex btn btn-primary" disabled>Download CSV</a> -->
                 <button type="button" class="btn btn-danger d-flex mx-1" data-bs-toggle="modal" data-bs-target="#myModal">Upload CSV</button>
             </div>
@@ -46,8 +46,9 @@
                         <div class="upload-csv-btn justify-content-center align-items-center mt-2">
                             <div class="container upload-from-browse-container">
                                 <!-- <form class="justify-content-center mt-2" action="index.php" method="post" enctype="multipart/form-data"> -->
-                                <form class="justify-content-center mt-2" action="" method="post" enctype="multipart/form-data"></form>
+                                <form class="justify-content-center mt-2" action="index.php" method="post" enctype="multipart/form-data">
                                     <div class="container d-flex upload-input-container">
+                                        <!-- <input class="form-control upload-input" type="file" id="formFile" name="uploadedCsv"> -->
                                         <input class="form-control upload-input" type="file" id="formFile" name="uploadedCsv">
                                     </div>
                                     <div class="container d-flex submit-upload-csv-btn-container">
